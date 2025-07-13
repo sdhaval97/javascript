@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Mood Journal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Simple Mood Journal</h1>
+    
+    <form id="journal-form">
+      <textarea id="entry-text" placeholder="Write your thoughts..." required></textarea>
+      
+      <label for="mood">Mood:</label>
+      <select id="mood">
+        <option value="🙂">Happy</option>
+        <option value="😐">Neutral</option>
+        <option value="🙁">Sad</option>
+      </select>
+      
+      <button type="submit">Save Entry</button>
+    </form>
+    
+    <div id="entries">
+      <h2>Previous Entries</h2>
+      <ul id="entry-list"></ul>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
