@@ -33,6 +33,8 @@ form.addEventListener("submit", function (event){
     // pushing the new entry to the entries array
     entries.push(newEntry);
     renderEntries();
+    entryText.value = ""; // clearing the journal input after hitting submit
+    moodSelect.value = "🙂";
 
 });
 
