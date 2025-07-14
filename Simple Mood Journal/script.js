@@ -32,7 +32,26 @@ form.addEventListener("submit", function (event){
 
     // pushing the new entry to the entries array
     entries.push(newEntry);
-    console.log(entries);
+    renderEntries();
 
 });
+
+// Rendering entries to the page
+function renderEntries() {
+    // Clear the current list
+    entryList.innerHTML = "";
+
+    // Loop through all the entries
+    entries.forEach(
+        entry => {
+            const li = document.createElement("li");
+            li.className = "entry";
+            li.innerHTML = `
+            <strong>${entry.mood}</strong> - ${entry.date}</br>
+            ${entry.text}
+            `;
+            entryList.prepend(li);
+        }
+    );
+}
 
