@@ -70,15 +70,26 @@ function renderEntries() {
 
     // Loop through all the entries
     entries.forEach(
-        entry => {
+        (entry, index) => {
             const li = document.createElement("li");
             li.className = "entry";
             li.innerHTML = `
             <strong>${entry.mood}</strong> - ${entry.date}</br>
-            ${entry.text}
+            ${entry.text}<br/>
+            <button class = "delete-btn" data-index = "${index}">🗑️ Delete</button>
             `;
             entryList.prepend(li);
         }
     );
+    const deleteButtons = document.querySelectorAll(".delete-btn");
+
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const index = parseInt(button.dataset.index);
+            entries.splice(index, 1);
+            renderEntries();
+        });     
+    });
+
 }
 
