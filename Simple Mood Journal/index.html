@@ -11,8 +11,8 @@
     <h1>Simple Mood Journal</h1>
     
     <form id="journal-form">
-      <textarea id="entry-text" placeholder="Write your thoughts..." required></textarea>
-      
+      <textarea id="entry-text" placeholder="Write your thoughts..." maxlength="750" required></textarea>
+      <p id="char-count">750 characters remaining</p>
       <label for="mood">Mood:</label>
       <select id="mood">
         <option value="🙂">Happy</option>
