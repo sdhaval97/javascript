@@ -55,6 +55,7 @@ form.addEventListener("submit", function (event){
 
     // pushing the new entry to the entries array
     entries.push(newEntry);
+    localStorage.setItem("journalEntries", JSON.stringify(entries));
     renderEntries();
     entryText.value = ""; // clearing the journal input after hitting submit
     moodSelect.value = "🙂";
@@ -91,5 +92,13 @@ function renderEntries() {
         });     
     });
 
+}
+
+const savedEntries = localStorage.getItem("journalEntries");
+
+if (savedEntries) {
+    const parsed = JSON.parse(savedEntries);
+    entries.push(...parsed);
+    renderEntries();
 }
 
