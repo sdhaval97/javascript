@@ -11,7 +11,19 @@ const moodSelect = document.getElementById(`mood`);
 // Entry list container
 const entryList = document.getElementById(`entry-list`);
 
-console.log(form, entryText, moodSelect, entryList);
+// letting the user see how many characters are remaining for the journal entry
+const charCount = document.getElementById("char-count");
+
+entryText.addEventListener("input", ()=> {
+    const remaining = 750 - entryText.value.length;
+    charCount.textContent = `${remaining} characters remaining`;
+
+    if (remaining <= 50) {
+        charCount.style.color = "red";
+    } else {
+        charCount.style.color = "black";
+    }
+});
 
 const entries = []; // array to store journal entries
 
@@ -29,6 +41,11 @@ form.addEventListener("submit", function (event){
         return;
     }
 
+    if (journal.length < 5) {
+        alert("Journal entry too small!");
+        return;
+    }
+
     // Creating an object for new entry
     const newEntry = {
         text: journal,
@@ -41,6 +58,8 @@ form.addEventListener("submit", function (event){
     renderEntries();
     entryText.value = ""; // clearing the journal input after hitting submit
     moodSelect.value = "🙂";
+    charCount.textContent = "750 characters remaining";
+    charCount.style.color = "black";
 
 });
 
