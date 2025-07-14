@@ -23,6 +23,12 @@ form.addEventListener("submit", function (event){
     const journal = entryText.value.trim();
     const mood = moodSelect.value;
 
+    // adding validation for empty entry
+    if (journal === "") {
+        alert("Please write something in your journal!");
+        return;
+    }
+
     // Creating an object for new entry
     const newEntry = {
         text: journal,
