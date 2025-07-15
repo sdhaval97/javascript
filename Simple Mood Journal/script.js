@@ -124,3 +124,5 @@ if (savedTheme === "dark") {
     document.body.classList.add("dark");
     themeToggle.textContent = "Switch to Light Mode";
 }
+
+
