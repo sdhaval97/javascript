@@ -8,10 +8,10 @@ body {
   max-width: 600px;
   margin: auto;
   background: white;
-  padding: 20px; /* This sets padding on all four sides */
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box; /* Ensures padding doesn’t break layout */
+  font-weight: bold;
 }
 
 
@@ -21,6 +21,9 @@ textarea {
   margin-bottom: 10px;
   font-size: 1rem;
   padding: 10px;
+  box-sizing: border-box;
+  max-width: 100%;
+  resize: vertical;
 }
 
 select, button {
@@ -55,5 +58,11 @@ body.dark .entry {
   background-color: #333;
   color: #fff;
   border-color: #555;
+}
+
+body.dark .container {
+  background-color: #2b2b2b;
+  color: #ffffff;
+  font-weight: bold;
 }
 
