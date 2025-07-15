@@ -42,3 +42,18 @@ select, button {
   word-wrap: break-word;
   white-space: pre-wrap;
 }
+
+body.dark {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark textarea,
+body.dark select,
+body.dark button,
+body.dark .entry {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
+}
+
