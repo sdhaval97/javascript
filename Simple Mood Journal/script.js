@@ -102,3 +102,25 @@ if (savedEntries) {
     renderEntries();
 }
 
+// Theme toggler
+const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+
+    // updating the button text
+    themeToggle.textContent = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
+
+    // save preference
+    localStorage.setItem("preferredTheme", isDark ? "dark":"light");
+
+});
+
+const savedTheme = localStorage.getItem("preferredTheme");
+
+if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    themeToggle.textContent = "Switch to Light Mode";
+}
