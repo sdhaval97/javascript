@@ -23,5 +23,21 @@ form.addEventListener("submit", function(event) {
     };
 
     gratitudeEntries.push(newEntry);
-    console.log(gratitudeEntries);
+    renderEntries();
 });
+
+function renderEntries() {
+    // clear the list before rendering
+    entryList.innerHTML = "";
+
+    // loop through entries
+    gratitudeEntries.forEach(entry => {
+        const li = document.createElement("li");
+        li.className = "entry";
+        li.innerHTML = `
+            <div><strong>${entry.date}</strong></div>
+            <div>I'm grateful for: ${entry.text}</div>
+        `;
+        entryList.prepend(li);
+    });
+}
