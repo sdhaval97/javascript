@@ -5,32 +5,48 @@ const gratitude = document.getElementById("gratitude-input");
 const entryList = document.getElementById("entry-list");
 
 // array to hold gratitude entries
-const gratitudeEntries = [];
+let gratitudeEntries = [];
+
+// Load entries from local storage on page load
+function loadEntries() {
+    const savedEntries = localStorage.getItem("gratitudeEntries");
+    if (savedEntries) {
+        gratitudeEntries = JSON.parse(savedEntries);
+        renderEntries();
+    }
+}
+
+// Save entries to local storage
+function saveEntries() {
+    localStorage.setItem("gratitudeEntries", JSON.stringify(gratitudeEntries));
+}
 
 // Event listener to handle form submissions
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
     const value = gratitude.value.trim();
-    console.log("Gratitude entry:", value);
-
-    //clearing the text area
-    gratitude.value = "";
+    
+    if (value === "") {
+        return;
+    }
 
     const newEntry = {
         text: value,
-        date: new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })
+        date: new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" }),
+        id: Date.now()
     };
 
     gratitudeEntries.push(newEntry);
+    saveEntries();
     renderEntries();
+    
+    gratitude.value = "";
 });
 
 function renderEntries() {
-    // clear the list before rendering
     entryList.innerHTML = "";
 
-    // loop through entries
     gratitudeEntries.forEach(entry => {
         const li = document.createElement("li");
         li.className = "entry";
@@ -41,3 +57,6 @@ function renderEntries() {
         entryList.prepend(li);
     });
 }
+
+// Load entries when page loads
+loadEntries();
